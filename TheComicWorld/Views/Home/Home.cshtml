@@ -1,0 +1,72 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>The Comic World</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link href="~/styles/Styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="allPage">
+        <div class="text-center">
+            <div>
+                <img src="~/images/banner.png" alt="The Comic World" width="800" height="70">
+            </div>
+            <br />
+            <h5>The comic world is the right place to find the rarities you're looking for.</h5>
+            <h5>We have comics based on your favorite games and the traditional titles from DC and Marvel.</h5>
+            <br />
+            <div id="gallery">
+                <img src="~/images/blackest_night.jpg" alt="Blackest Night" width="600" height="400">
+                <div id="description">DC Comics<br />Blackest Night</div>
+            </div>
+            <div id="gallery">
+                <img src="~/images/conviction.jpg" alt="Conviction" width="600" height="400">
+                <div id="description">Mass Effect:<br />Conviction</div>
+            </div>
+            <div id="gallery">
+                <img src="~/images/demon_in_a_bottle.jpg" alt="Demon in a Bottle" width="600" height="400">
+                <div id="description">Iron Man:<br />Demon in a Bottle</div>
+            </div>
+            <div id="gallery">
+                <img src="~/images/dragon_age.jpg" alt="Dragon Age" width="600" height="400">
+                <div id="description">Dragon Age<br />Ominibus</div>
+            </div>
+            <div id="fixed"></div>
+            <div id="gallery">
+                <img src="~/images/gods_and_mortals.jpg" alt="Gods and Mortals" width="600" height="400">
+                <div id="description">Wonder Woman:<br />Gods and Mortals</div>
+            </div>
+            <div id="gallery">
+                <img src="~/images/league_of_one.jpg" alt="A League of One" width="600" height="400">
+                <div id="description">Justice League:<br />A League of One</div>
+            </div>
+            <div id="gallery">
+                <img src="~/images/matters_of_conscience.jpg" alt="Matters of Conscience" width="600" height="400">
+                <div id="description">Witcher: Matters of Conscience</div>
+            </div>
+            <div id="gallery">
+                <img src="~/images/thanos_quest.jpg" alt="Thanos Quest" width="600" height="400">
+                <div id="description">Marvel Comics<br />Thanos Quest</div>
+            </div>
+            <div id="fixed">
+                <br />
+                <a class="btn btn-primary" asp-action="List" asp-controller="Product">Catalogue List</a>
+                <a class="btn btn-primary" asp-action="Index" asp-controller="Admin">Admin Page</a>
+                <a class="btn btn-primary" asp-action="List" asp-controller="Order">Orders Page</a>
+                <a class="btn btn-primary" asp-action="Index" asp-controller="Identity">Identity Page</a>
+                <a class="btn btn-primary" asp-action="Index" asp-controller="RoleAdmin">Role Identity Page</a>
+                @if (User?.Identity?.IsAuthenticated ?? false)
+                {
+                    <a asp-controller="Account" asp-action="Logout"
+                       class="btn btn-danger">Logout</a>
+                }
+            </div>
+        </div>         
+    </div>
+</body>
+</html>

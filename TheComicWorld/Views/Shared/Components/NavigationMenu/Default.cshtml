@@ -1,0 +1,28 @@
+﻿@model IEnumerable<string>
+<a class="btn btn-block btn-secondary" asp-action="Index" asp-controller="Home">Home Page</a>
+<a class="btn btn-block btn-secondary" asp-action="Index" asp-controller="Admin">Admin Page</a>
+<a class="btn btn-block btn-secondary" asp-action="List" asp-controller="Order">Orders Page</a>
+@if (User?.Identity?.IsAuthenticated ?? false)
+{
+    <a asp-controller="Account" asp-action="Logout"
+       class="btn btn-block btn-danger">Logout</a>
+}
+
+<a class="btn btn-block btn-secondary"
+   asp-action="List"
+   asp-controller="Product"
+   asp-route-category="">
+    All Publishers
+</a>
+
+@foreach (string category in Model)
+{
+    <a class="btn btn-block
+       @(category == ViewBag.SelectedCategory ? "btn-primary": "btn-secondary")"
+       asp-action="List"
+       asp-controller="Product"
+       asp-route-category="@category"
+       asp-route-productPage="1">
+        @category
+    </a>
+}

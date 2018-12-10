@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Users</title>
+    <meta name="viewport" content="width=device-width" />
+    <link href="/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/styles/Styles.css" rel="stylesheet" type="text/css">
+</head>
+<body class="m-1 p-1">
+    <div id="allPage">
+        <div class="bg-info p-2 row">
+            <div class="col-2">
+                @if (User?.Identity?.IsAuthenticated ?? false)
+                {
+                    <a asp-controller="Account" asp-action="Logout"
+                       class="btn btn-block btn-danger">Logout</a>
+                }
+            </div>
+            <div class="col-2">
+                <a class="btn btn-block btn-secondary" asp-action="Index" asp-controller="Home">Home Page</a>
+            </div>
+        </div>
+            @RenderBody()
+        </div>
+</body>
+</html>
