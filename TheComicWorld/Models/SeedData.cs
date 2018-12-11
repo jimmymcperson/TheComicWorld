@@ -103,6 +103,18 @@ namespace TheComicWorld.Models
                         UserID = 10,
                         ReviewText = "It's good.",
                         ProductID = Products.Single(p => p.Name == "Mass Effect: Conviction").ProductID
+                    },
+                    new Review
+                    {
+                        UserID = 11,
+                        ReviewText = "It's bad.",
+                        ProductID = Products.Single(p => p.Name == "Mass Effect: Conviction").ProductID
+                    },
+                    new Review
+                    {
+                        UserID = 10,
+                        ReviewText = "It's okay.",
+                        ProductID = Products.Single(p => p.Name == "The Witcher: Matters of Conscience").ProductID
                     }
                 );
                 context.SaveChanges();

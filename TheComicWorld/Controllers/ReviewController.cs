@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TheComicWorld.Models;
+using TheComicWorld.Models.ViewModels;
 
 namespace TheComicWorld.Controllers
 {
@@ -14,10 +15,32 @@ namespace TheComicWorld.Controllers
         {
             repository = repo;
         }
+        
+        [HttpGet]
+        public IActionResult Review(int productid)
+        {
+            return View();
+        }
 
-        public ViewResult ReviewList(int productid) => View(repository.Reviews
+        //[HttpPost]
+        //public IActionResult Review(Review review)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        repository.SaveProduct(product);
+        //        TempData["message"] = $"{product.Name} has been saved";
+        //        return RedirectToAction("Index");
+        //    }
+        //    else
+        //    {
+        //        // there is something wrong with the data values
+        //        return View(product);
+        //    }
+        //}
+
+        public ViewResult ReviewList(int productid) => View(new ReviewViewModel{Reviews = repository.Reviews
             .Where(r => r.ProductID == productid)
-            .OrderBy(r => r.ReviewID)
-            );
+            .OrderBy(r => r.ReviewID) }
+        );
     }
 }

@@ -1,5 +1,5 @@
-﻿@model IEnumerable<Review>
-@foreach (var r in Model)
+﻿@model ReviewViewModel
+@foreach (var r in Model.Reviews)
 {
     <div>
         <h3>@r.ProductID</h3>
