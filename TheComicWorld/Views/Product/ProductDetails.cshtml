@@ -15,7 +15,7 @@
 <br />
 
 <form asp-action="Review"
-      asp-controller="Review" asp-route-productId="@Model.ProductID">
+      asp-controller="Review" method="get" asp-route-productId="@Model.ProductID">
     <input type="hidden" asp-for="ProductID" />
     <button type="submit" class="btn btn-secondary">Write Reviews</button>
 </form>

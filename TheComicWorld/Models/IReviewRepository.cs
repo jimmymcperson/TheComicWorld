@@ -8,5 +8,9 @@ namespace TheComicWorld.Models
     public interface IReviewRepository
     {
         IQueryable<Review> Reviews { get; }
+
+        void SaveReview(Review review);
+
+        Review DeleteReview(int reviewID);
     }
 }

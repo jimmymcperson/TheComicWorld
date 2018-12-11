@@ -16,27 +16,27 @@ namespace TheComicWorld.Controllers
         {
             repository = repo;
         }
-               
+        
+        [HttpGet]
         public ViewResult Review(int productid)
         {
             return View(new Review { ProductID = productid });
         }
 
-        //[HttpPost]
-        //public IActionResult Review(Review review)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        repository.SaveProduct(product);
-        //        TempData["message"] = $"{product.Name} has been saved";
-        //        return RedirectToAction("Index");
-        //    }
-        //    else
-        //    {
-        //        // there is something wrong with the data values
-        //        return View(product);
-        //    }
-        //}
+        [HttpPost]
+        public IActionResult Review(Review review)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.SaveReview(review);
+                return RedirectToAction("List", "Product");
+            }
+            else
+            {
+                // there is something wrong with the data values
+                return View(review);
+            }
+        }
 
         public ViewResult ReviewList(int productid) => View(new ReviewViewModel{Reviews = repository.Reviews
             .Where(r => r.ProductID == productid)
