@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Review>
+@foreach (var r in Model)
+{
+    <div>
+        <h3>@r.UserID</h3>
+        @r.ReviewText
+    </div>
+}

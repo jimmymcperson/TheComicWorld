@@ -25,10 +25,13 @@ namespace TheComicWorld
                 options.UseSqlServer(Configuration["Data:TheComicWorldProducts:ConnectionString"]));
             services.AddDbContext<AppIdentityDbContext>(options =>
                 options.UseSqlServer(Configuration["Data:TheComicWorldIdentity:ConnectionString"]));
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration["Data:TheComicWorldReviews:ConnectionString"]));
             services.AddIdentity<AppUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppIdentityDbContext>()
                 .AddDefaultTokenProviders();
             services.AddTransient<IProductRepository, EFProductRepository>();
+            services.AddTransient<IReviewRepository, EFReviewRepository>();
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IOrderRepository, EFOrderRepository>();
