@@ -2,7 +2,8 @@
 @foreach (var r in Model)
 {
     <div>
-        <h3>@r.UserID</h3>
+        <h3>@r.ProductID</h3>
+        @r.UserID says:<br/>
         @r.ReviewText
     </div>
 }

@@ -11,7 +11,7 @@ using TheComicWorld.Models;
 namespace TheComicWorld.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181208021028_Initial")]
+    [Migration("20181211110618_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,6 +101,22 @@ namespace TheComicWorld.Migrations
                     b.HasKey("ProductID");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("TheComicWorld.Models.Review", b =>
+                {
+                    b.Property<int>("ReviewID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ProductID");
+
+                    b.Property<string>("ReviewText");
+
+                    b.Property<int>("UserID");
+
+                    b.HasKey("ReviewID");
+
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("TheComicWorld.Models.CartLine", b =>

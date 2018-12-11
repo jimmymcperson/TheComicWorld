@@ -102,6 +102,22 @@ namespace TheComicWorld.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("TheComicWorld.Models.Review", b =>
+                {
+                    b.Property<int>("ReviewID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ProductID");
+
+                    b.Property<string>("ReviewText");
+
+                    b.Property<int>("UserID");
+
+                    b.HasKey("ReviewID");
+
+                    b.ToTable("Reviews");
+                });
+
             modelBuilder.Entity("TheComicWorld.Models.CartLine", b =>
                 {
                     b.HasOne("TheComicWorld.Models.Order")
@@ -112,6 +128,14 @@ namespace TheComicWorld.Migrations
                         .WithMany()
                         .HasForeignKey("ProductID");
                 });
+
+            modelBuilder.Entity("TheComicWorld.Models.Review", b =>
+            {
+                b.HasOne("TheComicWorld.Models.Product", "Product")
+                    .WithMany("Reviews")
+                    .HasForeignKey("ProductID")
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
 #pragma warning restore 612, 618
         }
     }

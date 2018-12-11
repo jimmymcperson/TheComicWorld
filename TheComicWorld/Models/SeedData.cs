@@ -14,9 +14,10 @@ namespace TheComicWorld.Models
         {
             ApplicationDbContext context = app.ApplicationServices.GetRequiredService<ApplicationDbContext>();
             context.Database.Migrate();
+            var Products = new List<Product>();
             if (!context.Products.Any())
             {
-                context.Products.AddRange(
+                Products = new List<Product> {
                     new Product
                     {
                         Name = "Mass Effect: Conviction",
@@ -88,6 +89,20 @@ namespace TheComicWorld.Models
                         Author = "Christopher Moeller",
                         Category = "DC Comics",
                         Price = 85
+                    }
+                };
+                context.Products.AddRange(Products);
+                context.SaveChanges();
+            }
+
+            if (!context.Reviews.Any())
+            {
+                context.Reviews.AddRange(
+                    new Review
+                    {
+                        UserID = 10,
+                        ReviewText = "It's good.",
+                        ProductID = Products.Single(p => p.Name == "Mass Effect: Conviction").ProductID
                     }
                 );
                 context.SaveChanges();
