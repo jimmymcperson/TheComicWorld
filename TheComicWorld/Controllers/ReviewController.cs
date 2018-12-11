@@ -15,6 +15,9 @@ namespace TheComicWorld.Controllers
             repository = repo;
         }
 
-        public ViewResult ReviewList() => View(repository.Reviews);
+        public ViewResult ReviewList(int productid) => View(repository.Reviews
+            .Where(r => r.ProductID == productid)
+            .OrderBy(r => r.ReviewID)
+            );
     }
 }
