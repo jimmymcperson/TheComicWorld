@@ -38,5 +38,13 @@ namespace TheComicWorld.Controllers
                 },
                 CurrentCategory = category
             });
+
+        public ViewResult ProductDetails(int productId) => View(repository.Products.FirstOrDefault(p => p.ProductID == productId));
+
+        [HttpGet]
+        public ViewResult Review()
+        {
+            return View();
+        }
     }
 }
