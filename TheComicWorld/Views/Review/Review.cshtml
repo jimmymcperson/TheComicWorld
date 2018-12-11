@@ -1,12 +1,17 @@
-﻿@model Product
+﻿@model Review
 <form asp-action="Review" method="post">
     <div class="form-group">
-        <input type="hidden" asp-for="ProductID" />
+        <input type="hidden" asp-for="@Model.ProductID" />
     </div>
     <div class="form-group">
-        <label asp-for="Name"></label>
-        <div><span asp-validation-for="Name" class="text-danger"></span></div>
-        <input asp-for="Name" class="form-control" />
+        <label asp-for="UserID"></label>
+        <div><span asp-validation-for="UserID" class="text-danger"></span></div>
+        <input asp-for="UserID" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ReviewText"></label>
+        <div><span asp-validation-for="ReviewText" class="text-danger"></span></div>
+        <textarea asp-for="ReviewText" class="form-control"></textarea>
     </div>
     <div class="text-center">
         <button class="btn btn-primary" type="submit">Save</button>

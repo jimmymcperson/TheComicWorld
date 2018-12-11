@@ -11,15 +11,15 @@ namespace TheComicWorld.Controllers
     public class ReviewController : Controller
     {
         private IReviewRepository repository;
+
         public ReviewController(IReviewRepository repo)
         {
             repository = repo;
         }
-        
-        [HttpGet]
-        public IActionResult Review(int productid)
+               
+        public ViewResult Review(int productid)
         {
-            return View();
+            return View(new Review { ProductID = productid });
         }
 
         //[HttpPost]
